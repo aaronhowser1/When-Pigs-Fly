@@ -1,5 +1,6 @@
 package com.aaronhowser1.whenpigsfly;
 
+import com.aaronhowser1.whenpigsfly.entity.FlyingPigEntity;
 import com.aaronhowser1.whenpigsfly.setup.ClientProxy;
 import com.aaronhowser1.whenpigsfly.setup.IProxy;
 import com.aaronhowser1.whenpigsfly.setup.ServerProxy;
@@ -23,7 +24,7 @@ public class WhenPigsFly {
 
     public static final String MODID = "whenpigsfly";
 
-    public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
+    public static IProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
 
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();

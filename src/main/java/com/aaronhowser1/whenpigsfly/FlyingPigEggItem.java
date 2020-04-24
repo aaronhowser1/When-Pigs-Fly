@@ -1,5 +1,6 @@
 package com.aaronhowser1.whenpigsfly;
 
+import com.aaronhowser1.whenpigsfly.entity.FlyingPigEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
