@@ -38,7 +38,7 @@ public class FlyingPigEntity extends AmbientEntity {
     private static final EntityPredicate field_213813_c = (new EntityPredicate()).setDistance(4.0D).allowFriendlyFire();
     private BlockPos spawnPosition;
 
-    public FlyingPigEntity(EntityType<? extends net.minecraft.entity.passive.BatEntity> type, World worldIn) {
+    public FlyingPigEntity(EntityType<? extends     FlyingPigEntity> type, World worldIn) {
         super(type, worldIn);
         this.setIsBatHanging(true);
     }
@@ -223,7 +223,7 @@ public class FlyingPigEntity extends AmbientEntity {
                 return false;
             }
 
-            return i > p_223369_4_.nextInt(j) ? false : canSpawnOn(p_223369_0_, p_223369_1_, reason, p_223369_3_, p_223369_4_);
+            return i <= p_223369_4_.nextInt(j) && canSpawnOn(p_223369_0_, p_223369_1_, reason, p_223369_3_, p_223369_4_);
         }
     }
 

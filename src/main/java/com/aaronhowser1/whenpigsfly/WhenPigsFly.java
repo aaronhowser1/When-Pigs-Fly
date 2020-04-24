@@ -58,7 +58,7 @@ public class WhenPigsFly {
             event.getRegistry().register(EntityType.Builder.create(FlyingPigEntity::new, EntityClassification.CREATURE)
                     .size(1, 1)
                     .setShouldReceiveVelocityUpdates(false)
-                    .build("flyingpig").setRegistryName(WhenPigsFly.MODID, "weirdmob"));
+                    .build("flyingpig").setRegistryName(WhenPigsFly.MODID, "flyingpig"));
 
         }
     }
