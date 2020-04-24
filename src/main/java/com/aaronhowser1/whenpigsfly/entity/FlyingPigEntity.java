@@ -2,8 +2,14 @@ package com.aaronhowser1.whenpigsfly.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
+import net.minecraft.entity.effect.LightningBoltEntity;
+import net.minecraft.entity.monster.GhastEntity;
+import net.minecraft.entity.monster.ZombiePigmanEntity;
 import net.minecraft.entity.passive.AmbientEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -230,5 +236,21 @@ public class FlyingPigEntity extends AmbientEntity {
 
     protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
         return sizeIn.height / 2.0F;
+    }
+
+    /**
+     * Called when a lightning bolt hits the entity.
+     */
+    public void onStruckByLightning(LightningBoltEntity lightningBolt) {
+        GhastEntity ghastEntity = EntityType.GHAST.create(this.world);
+        ghastEntity.setLocationAndAngles(this.getPosX(), this.getPosY(), this.getPosZ(), this.rotationYaw, this.rotationPitch);
+        ghastEntity.setNoAI(this.isAIDisabled());
+        if (this.hasCustomName()) {
+            ghastEntity.setCustomName(this.getCustomName());
+            ghastEntity.setCustomNameVisible(this.isCustomNameVisible());
+        }
+
+        this.world.addEntity(ghastEntity);
+        this.remove();
     }
 }
